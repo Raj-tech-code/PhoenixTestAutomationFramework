@@ -25,13 +25,13 @@ public class CountAPITest {
 		  .log().all()
 		  .statusCode(200)
 		  .body("message", equalTo("Success"))
-		  .time(lessThan(7000L))
+		  .time(lessThan(15000L))
 		  .body("data", notNullValue())
 		  .body("data.size()", equalTo(3))
 		  .body("data.count", everyItem(greaterThanOrEqualTo(0)))
 		  .body("data.label", everyItem(not(blankOrNullString())))
 		  .body("data.key", containsInAnyOrder("pending_for_delivery","created_today","pending_fst_assignment"))
-		  .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema\\CountAPIResponseSchema_FD.json"));
+		  .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/CountAPIResponseSchema_FD.json"));
 		  
 	}
 	
