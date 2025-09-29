@@ -27,6 +27,10 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+    
+    env:
+      ENV: ${{ github.event.inputs.env || 'qa' }}
+      SUITE_XML_FILE: ${{ github.event.inputs.suiteXmlFile || 'testng.xml' }}
 
     steps:
     - uses: actions/checkout@v4
